@@ -1,0 +1,15 @@
+(*5(a).Solve using Laplace Transform:d^2y/dt^2-3 dy/dt+2y=t^2,y \
+(0)=2,y'(0)=1*)
+eq = y''[t] - 3 y'[t] + 2 y[t] == t^2;
+
+tm = LaplaceTransform[eq, t, s];
+
+tn = Solve[tm, LaplaceTransform[y[t], t, s]] /. {y'[0] -> 1, y[0] -> 2}
+
+
+
+tp = tn[[1, 1, 2]]
+
+
+InverseLaplaceTransform[tp, s, t]
+
